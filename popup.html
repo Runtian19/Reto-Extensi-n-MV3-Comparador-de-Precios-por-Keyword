@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador de Precios</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-search-dollar"></i> Comparador de Precios</h1>
+            <p class="subtitle">Compara precios entre Falabella y MercadoLibre</p>
+        </header>
+
+        <div class="input-section">
+            <div class="input-group">
+                <input type="text" id="keywordInput" placeholder="Ej: zapatillas running, monitor 24 pulgadas..." autocomplete="off">
+                <button id="addKeywordBtn" class="btn-primary">
+                    <i class="fas fa-plus"></i> Agregar Keyword
+                </button>
+            </div>
+            <p class="hint"><i class="fas fa-lightbulb"></i> Escribe un producto para comparar precios</p>
+        </div>
+
+        <div class="status-section">
+            <div class="status-card">
+                <div class="status-header">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Estado del Scraping</h3>
+                </div>
+                <div class="status-content">
+                    <div class="status-item">
+                        <span class="label">Estado:</span>
+                        <span id="statusText" class="status-idle">Idle</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="label">Productos obtenidos:</span>
+                        <span id="productCount" class="count">0</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="label">Keyword activa:</span>
+                        <span id="activeKeyword" class="keyword">Ninguna</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="label">Sitio activo:</span>
+                        <span id="activeSite" class="site">Ninguno</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-section">
+            <button id="cancelBtn" class="btn-danger" disabled>
+                <i class="fas fa-stop-circle"></i> Cancelar Scraping
+            </button>
+            <button id="clearBtn" class="btn-secondary">
+                <i class="fas fa-trash-alt"></i> Limpiar Todo
+            </button>
+        </div>
+
+        <div class="keywords-section">
+            <h2><i class="fas fa-key"></i> Keywords Guardadas</h2>
+            <div id="keywordsList" class="keywords-list">
+                <!-- Las keywords se cargarán dinámicamente aquí -->
+                <div class="empty-state">
+                    <i class="fas fa-search"></i>
+                    <p>No hay keywords guardadas</p>
+                    <p class="small">Agrega una keyword para comenzar</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h2><i class="fas fa-chart-bar"></i> Estadísticas Rápidas</h2>
+            <div id="quickStats" class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon falabella">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Falabella</span>
+                        <span class="stat-value" id="falabellaCount">0</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon mercadolibre">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">MercadoLibre</span>
+                        <span class="stat-value" id="mercadolibreCount">0</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon total">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Total Productos</span>
+                        <span class="stat-value" id="totalCount">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p><i class="fas fa-info-circle"></i> Los datos se guardan automáticamente. Puedes cerrar y volver a abrir la extensión.</p>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
